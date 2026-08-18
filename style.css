@@ -1,0 +1,123 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #0f0f0f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.scene {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.panda-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: floatPanda 4s ease-in-out infinite;
+}
+
+@keyframes floatPanda {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+.panda-main-img {
+    width: 115%;   /* ১০ সেন্টিমিটার বা আপনার চাহিদামতো সামান্য জুম করার জন্য */
+    height: 115%;  /* ১০ সেন্টিমিটার বা আপনার চাহিদামতো সামান্য জুম করার জন্য */
+    object-fit: cover;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* ছবিটি নিখুঁতভাবে মাঝখানে রাখতে */
+    transition: all 0.6s ease;
+}
+
+.envelope-hotspot {
+    position: absolute;
+    top: 52%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 140px;
+    height: 95px;
+    cursor: pointer;
+    z-index: 5;
+    border-radius: 10px;
+    box-shadow: 0 0 0 0 rgba(255, 71, 87, 0.7);
+    animation: pulseHotspot 2s infinite;
+}
+
+@keyframes pulseHotspot {
+    0% { box-shadow: 0 0 0 0 rgba(255, 71, 87, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(255, 71, 87, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 71, 87, 0); }
+}
+
+/* পোলারয়েড স্টাইল পেপার বক্স (আরও বেশি স্টাইলিশ ও গ্লসি লুক) */
+.paper {
+    position: absolute;
+    width: 300px;
+    height: 420px;
+    background: #ffffff;
+    border-radius: 20px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.7), 0 0 40px rgba(255, 71, 87, 0.3);
+    text-align: center;
+    padding: 20px;
+    transform: scale(0.3) rotate(-5deg);
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.paper.show {
+    display: flex;
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+}
+
+/* ছবির ভেতরের ফ্রেম ও অ্যানিমেশন */
+.paper img {
+    width: 250px;
+    height: 290px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    margin-bottom: 12px;
+    animation: popImage 0.4s ease;
+}
+
+@keyframes popImage {
+    0% { transform: scale(0.8); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.end-text {
+    font-size: 38px;
+    font-weight: bold;
+    color: #ff4757;
+    text-shadow: 2px 2px 8px rgba(255, 71, 87, 0.3);
+    animation: bounceEnd 1s infinite alternate;
+}
+
+@keyframes bounceEnd {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-8px); }
+}
